@@ -1,0 +1,60 @@
+def stock_tracker():
+    prices = {
+        "AAPL": 180,
+        "TSLA": 250,
+        "AMZN": 130,
+        "MSFT": 300
+    }
+
+    entered_stocks = {}
+    total = 0
+
+    print("=== Stock Portfolio ===")
+    print("Type 'done' to finish\n")
+
+    while True:
+        # Show available stocks
+        print("\nAvailable Stocks:")
+        for stock, price in prices.items():
+            print(f"{stock} - ${price}")
+
+        # Show already selected stocks
+        print("Already added:", list(entered_stocks.keys()))
+
+        stock = input("Enter stock name: ").upper().strip()
+
+        if stock == "DONE":
+            break
+
+        if stock not in prices:
+            print("Stock not available! Please choose from the list.")
+            continue
+
+        if stock in entered_stocks:
+            print("Stock already entered!")
+            continue
+
+        # Quantity input validation
+        try:
+            qty = int(input("Enter quantity: "))
+            if qty <= 0:
+                print("Quantity must be positive!")
+                continue
+        except ValueError:
+            print("Please enter a valid number!")
+            continue
+
+        value = prices[stock] * qty
+        entered_stocks[stock] = value
+        total += value
+
+        print(f"{stock} added successfully!")
+
+    print("\n=== Portfolio Summary ===")
+    for s, v in entered_stocks.items():
+        print(f"{s} : ${v}")
+
+    print("Total Investment: $", total)
+
+stock_tracker()
+
