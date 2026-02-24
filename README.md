@@ -1,3 +1,3 @@
 # codeAlpha_Task
-#codealpha @CodeAlpha
+#codealpha @codealpha
 //KISHOREKUMAR//
