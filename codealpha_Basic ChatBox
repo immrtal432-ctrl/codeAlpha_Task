@@ -1,0 +1,32 @@
+def chatbot():
+    responses = {
+        "hello": "Hi!",
+        "hi": "Hello!",
+        "how are you": "I'm fine!",
+        "what is your name": "I'm CodeAlpha Bot.",
+        "bye": "Goodbye!"
+    }
+
+    history = []
+
+    print("=== Chatbot ===")
+
+    while True:
+        # Show last 5 inputs only
+        print("Previous inputs:", history[-5:])
+
+        user = input("You: ").lower().strip()
+
+        # Remove question marks or extra symbols
+        user = user.replace("?", "")
+
+        history.append(user)
+
+        if user in responses:
+            print("Bot:", responses[user])
+            if user == "bye":
+                break
+        else:
+            print("Bot: I don't understand. Try saying hello, hi, or bye.")
+
+chatbot()
